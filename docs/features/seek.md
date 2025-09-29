@@ -1,29 +1,26 @@
 # Seek Capabilities
 
-Seek complements Axiom by visualizing everything the scheduler knows in an approachable desktop UI. Here is a tour of the major capabilities and why they matter to both technical and non-technical teammates.
+Seek is the desktop companion for Axiom. It shows the same scheduler data that the FTC Robot Controller app produces, but in a layout built for coaches and developers.
 
-## Resilient connection handling
+## Clear status updates
 
-- **Buffered startup** – The Electron main process queues incoming `axiom-data` messages until the renderer reports that it is ready. This prevents the first burst of command events from disappearing during window loads.【F:Interface/src/main/index.ts†L8-L67】
-- **Friendly status feedback** – Main process IPC forwards connection events to the renderer, letting the UI display "Axiom Connected" or "Axiom Disconnected" so drivers know when telemetry is available.【F:Interface/src/main/index.ts†L68-L120】
-
-To the drive coach, this means Seek clearly communicates when it is safe to hand controllers to the drivers.
+- Connection status messages make it easy to see when the robot is ready.
+- Incoming command updates queue during startup so the first telemetry burst is never lost.
 
 ## Interactive state explorer
 
-- **Hierarchical viewer** – Command state objects render as collapsible trees, automatically sorting lists and guarding against circular references so complex subsystems stay readable.【F:Interface/src/renderer/src/components/StateValue.svelte†L1-L132】
-- **In-line editing** – Non-readonly values display as text inputs; pressing Enter publishes edits back to the scheduler so tuning parameters can change on the fly.【F:Interface/src/renderer/src/components/StateValue.svelte†L88-L123】
-
-From a strategist's perspective, Seek provides a dashboard you can tweak mid-match without digging through code.
+- Command state displays as an expandable tree, which keeps complex subsystems readable.
+- Editable fields appear as input boxes so you can update marked values between matches.
 
 ## Extensible event system
 
-- **Network registry** – Utility helpers register callbacks for incoming network events, making it simple to bolt on additional panels or analytics without rewriting the core connection logic.【F:Interface/src/renderer/src/lib/networkRegistry.ts†L1-L11】
-
-Because the registry abstracts message routing, mentors can prototype new visualization modules without touching low-level sockets.
+- Network helpers route incoming messages to any panel you build, so you can add new charts without reworking the transport layer.
 
 ## Cross-platform polish
 
-- **Unified window behavior** – Seek sets consistent window dimensions, hides the menu bar, and adapts icons per operating system, so the app looks native on Windows, macOS, and Linux.【F:Interface/src/main/index.ts†L18-L55】
+- Seek ships with consistent window behavior, icons, and menu settings on Windows, macOS, and Linux.
 
-Non-technical volunteers appreciate that Seek "just works" on whatever laptop the team brings to events.
+## Event-ready usage
+
+- Use Seek during practice or while scouting—never during an active match. The game manual only allows tuning in a non-competition environment.
+- Close the app on field control laptops to avoid distractions for drive teams.

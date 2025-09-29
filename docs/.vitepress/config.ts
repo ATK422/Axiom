@@ -11,6 +11,7 @@ export default defineConfig({
       {
         text: 'Guides',
         items: [
+          { text: 'Getting Started', link: '/guide/getting-started/' },
           { text: 'Install Axiom', link: '/guide/axiom-install' },
           { text: 'Install Seek', link: '/guide/seek-install' }
         ]
@@ -22,6 +23,15 @@ export default defineConfig({
       '/guide/': [
         {
           text: 'Getting Started',
+          collapsed: false,
+          items: [
+            { text: 'Overview', link: '/guide/getting-started/' },
+            { text: 'Command Groups', link: '/guide/getting-started/command-groups' },
+            { text: 'Driver Controls', link: '/guide/getting-started/controls' }
+          ]
+        },
+        {
+          text: 'Install',
           collapsed: false,
           items: [
             { text: 'Install Axiom', link: '/guide/axiom-install' },
